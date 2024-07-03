@@ -1,0 +1,44 @@
+:root {
+    --primary-color: #f5f5f5;
+    --secondary-color: #000000;
+    --tertiary-color: #220c32;
+    --alt-color: #14dff6;
+    --alt-color2: #d9d9d9;
+  }
+
+.newsletter-section{
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50vh;
+}
+
+.details-newsletter{
+    color: var(--primary-color);
+    text-align: center;
+
+}
+.details-newsletter h2{
+    margin-bottom: 20px;
+}
+.details-newsletter p{
+    font-size: 1.5rem;
+    font-weight: 100;
+}
+.form-newsletter form{
+    display: flex;
+    justify-content: space-around;
+}
+.form-newsletter form input{
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+.form-newsletter form button{
+    border-radius: 8px;
+    background-color: grey;
+    color: var(--primary-color);
+    width: 77px;
+}
+

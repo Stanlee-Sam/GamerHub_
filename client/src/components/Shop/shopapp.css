@@ -1,0 +1,70 @@
+:root {
+  --primary-color: #f5f5f5;
+  --secondary-color: #000000;
+  --tertiary-color: #220c32;
+  --alt-color: #14dff6;
+  --alt-color2: #d9d9d9;
+  --alt-color3: #0f1432;
+}
+.search-bar {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+
+.search-bar input {
+  width: 200px;
+  height: 40px;
+  border-radius: 30px;
+  outline: none;
+  padding: 0 10px;
+  font-size: 10px;
+}
+
+.types-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  background-color: var(--alt-color2);
+}
+.type-link {
+  text-decoration: none;
+  color: var(--secondary-color);
+  font-size: 15px;
+  padding: 0 10px;
+}
+.type-link.active {
+  background-color: #333;
+  color: #fff;
+  text-decoration: underline; /* Underline the active link */
+}
+
+/* .banner-shop {
+  height: 50vh;
+} */
+
+.card-banner {
+  display: inline-flex;
+  justify-items: center;
+  place-items: center;
+  align-items: center;
+  width: 90%;
+  height: 375px;
+  background-color: var(--alt-color3);
+  border-radius: 15px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+}
+
+.ban-img {
+  background: url(../../assets/products_banner.jpeg) fixed no-repeat;
+  height: 375px;
+  width: 50%;
+  border-radius: 15px;
+}
+.det {
+  width: 50%;
+}

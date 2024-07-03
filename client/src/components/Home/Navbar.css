@@ -1,0 +1,56 @@
+:root {
+  --primary-color: #f5f5f5;
+  --secondary-color: #000000;
+  --tertiary-color: #220c32;
+  --alt-color: #14dff6;
+  --alt-color2: #d9d9d9;
+}
+
+.Navbar {
+  background-color: var(--alt-color2);
+  color: var(--secondary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  z-index: 12;
+  width: 100%;
+}
+
+.Navbar h1 {
+  margin: 10px;
+  margin-left: 30px;
+}
+.Navbar .nav-links {
+  display: inline-flex;
+  margin-right: 30px;
+}
+
+.Navbar .nav-links li {
+  list-style: none;
+  margin: 0 25px;
+}
+
+.Navbar .nav-links li a {
+  text-decoration: none;
+  color: var(--secondary-color);
+  border-radius: 5px;
+  height: 30px;
+  padding: 5px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.Navbar .nav-links li a:hover {
+  background-color: var(--alt-color);
+  color: var(--primary-color);
+}
+.Navbar .nav-links .nav-icons a {
+  margin: 13px;
+  color: var(--tertiary-color);
+}
+
+.Navbar .nav-links .nav-icons a:hover {
+  color: var(--alt-color);
+}

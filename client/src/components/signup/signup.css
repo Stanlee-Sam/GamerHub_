@@ -1,0 +1,81 @@
+:root {
+  --primary-color: #f5f5f5;
+  --secondary-color: #000000;
+  --tertiary-color: #220c32;
+  --alt-color: #14dff6;
+  --alt-color2: #d9d9d9;
+}
+
+.auth-page {
+  background: url(../../assets/loginsignup.jpeg) center no-repeat fixed;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-form {
+  width: 500px;
+  border-radius: 10px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.auth-form h2 {
+  text-align: center;
+  /* margin-bottom: 20px; */
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-bottom: 2px solid var(--primary-color);
+    outline: none;
+    font-size: 16px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.auth-form input:focus {
+    border-bottom: 2px solid var(--alt-color);
+}
+
+.auth-form button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-radius: 15px;
+    background: var(--alt-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    
+}
+
+.auth-form button:hover {
+    background: var(--alt-color2);
+    color: var(--secondary-color);
+}
+.auth-form p {
+    margin-top: 20px;
+}
+.auth-form a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.auth-form a:hover {
+    text-decoration: underline;
+}

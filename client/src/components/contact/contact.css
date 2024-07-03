@@ -1,0 +1,151 @@
+:root {
+  --primary-color: #f5f5f5;
+  --secondary-color: #000000;
+  --tertiary-color: #220c32;
+  --alt-color: #14dff6;
+  --alt-color2: #d9d9d9;
+}
+.banner {
+  width: 100%;
+}
+.banner-img {
+  background: url(../../../src/assets/contact_banner.jpeg);
+  height: 418px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+.banner-text {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--primary-color);
+}
+.banner-text .banner-title,.banner-des{
+    text-align: center;
+}
+.banner-text h1 {
+    font-size: 96px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.banner-text p {
+    font-size: 25px;
+    font-weight: 400;
+}
+.contact-location{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 70px;
+    margin-bottom: 20px;
+}
+
+.about-contact h2{
+    font-size: 40px;
+    font-weight: 100;
+    margin-bottom: 20px;
+
+}
+.about-contact h3{
+    font-size: 26px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    
+}
+.about-contact p{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+iframe{
+    width:400px; 
+    height: 400px;
+    border: none;
+    border-radius: 15px;
+    margin-bottom: 20px;
+
+}
+.input-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    /* width: 500px; */
+
+}
+.form-contact{
+    width: 80%;
+    border: 1px solid ;
+    border-radius: 15px;
+    display: grid;
+    flex-direction: column;
+    justify-content: center;
+}
+ .contact-form .form-card-details {
+    margin-top: 25px;
+   
+  }
+  .contact-form .form-card-details .card-box {
+
+    margin-top: 10px;
+  }
+  
+  .contact-form .form-card-details .card-box .details {
+    display: flex;
+    font-weight: 500;
+    margin-left: 5px;
+  }
+  .contact-form .form-card-details .card-box input {
+    height: 45px;
+    width: 100%;
+    padding-left: 10px;
+    outline: none;
+    border-radius: 10px;
+    margin-left: 10px;
+    
+    /* color: var(--primary-color); */
+    font-size: 16px;
+    margin-bottom: 10px;
+    background: none;
+   
+  }
+  
+  #text {
+    border: none;
+    width: 100%;
+    max-width: 100%;
+    /* min-width: 638px; */
+    background: none;
+    background: none;
+    border-bottom: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 200;
+    font-size: 16px;
+    outline: none;
+    height: 80px;
+    resize: none;
+  }
+  #text::placeholder {
+      color: var(--alt-color1);
+  }
+  .contact-form .form-card-details .card-box input::placeholder {
+      color: var(--alt-color1);
+  }
+  .form-btn {
+      width: 80%;
+      margin-top: 30px;
+      font-weight: 600;
+      outline: none;
+      border-radius: 5px;
+      padding: 8px;
+      background: var(--alt-color);
+      color: var(--secondary-color);
+      font-size: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+  }
