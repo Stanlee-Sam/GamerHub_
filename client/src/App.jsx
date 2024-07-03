@@ -1,5 +1,5 @@
-// import Signup from "./components/signup/signup";
-// import Login from "./components/login/login";
+import Signup from "./components/signup/signup";
+import Login from "./components/login/login";
 import Navbar from "./components/Home/Navbar";
 import Home from "./components/Home/home";
 // import Shopapp from "./components/Shop/shopapp";
@@ -24,8 +24,8 @@ const App = () => {
     </Routes>
     <Footer />
     
-    </BrowserRouter>      {/* <Signup/>
-    <Login/> */}
+    </BrowserRouter>      <Signup/>
+    <Login/>
       {/* <Navbar />
       <Home /> */}
 
