@@ -1,9 +1,6 @@
-import { Router} from 'express'
-
+import { Router } from "express";
+import { createUser} from '../controllers/users.controllers.js'
 const router = Router();
+router.post("/register", createUser);
 
-router.post('/register', (req, res) => {
-    res.send("Registering new user")
-})
-
-export default router
+export default router;

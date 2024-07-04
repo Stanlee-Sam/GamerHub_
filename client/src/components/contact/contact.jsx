@@ -1,25 +1,47 @@
-import { useState} from 'react'
+import { useFormik } from "formik";
 import "./contact.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import * as Yup from "yup";
+import axios from "axios";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    message: ""
+  const validationSchema = Yup.object({
+    firstName: Yup.string()
+      .min(2, "First name should be at least 2 characters long")
+      .max(30, "First name should be at most 30 characters long"),
+    lastName: Yup.string()
+      .min(2, "Last name should be at least 2 characters long")
+      .max(30, "Last name should be at most 30 characters long"),
+    email: Yup.string().email("Invalid email address"),
+    message: Yup.string()
+      .min(10, "Message should be at least 10 characters long")
+      .max(500, "Message should be at most 500 characters long"),
   });
+  const formik = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      message: "",
+    },
+    validationSchema,
+    onSubmit: async (values) => {
+      try {
+        const response = await axios.post("/api/contact", {
+          firstName: values.firstName,
+          lastName: values.lastName,
+          email: values.email,
+          message: values.message,
+        });
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleFormSubmit = (event) => {
-    event.preventDefault(); 
-    alert("Form submitted!");
-  };
+        alert("Message sent successfully!");
+      } catch (e) {
+        console.error("There was an error sending the message", e);
+        alert("Error sending the message, please try again.");
+      }
+    },
+  });
   return (
     <section className="contact-section">
       <br />
@@ -68,63 +90,70 @@ const Contact = () => {
       </div>
       <div className="contact-form">
         <div className="form-title">
-        <h2>Leave A Message</h2>
-        <h3>We love to hear from you</h3>
+          <h2>Leave A Message</h2>
+          <h3>We love to hear from you</h3>
         </div>
         <div className="input-form">
-        <form className = "form-contact" onSubmit={handleFormSubmit}>
-              <div className="form-card-details">
-                <div className="card-box">
-                  <span className="details">First Name</span>
-                  <input
-                    type="text"
-                    name="firstName"
-                    placeholder="First Name"
-                    value={formData.firstName} required
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="card-box">
-                  <span className="details">Last Name</span>
-                  <input
-                    type="text"
-                    name="lastName"
-                    placeholder="Last Name"
-                    value={formData.lastName}required
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="card-box">
-                  <span className="details">Email</span>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Enter your email"
-                    value={formData.email}
-                    onChange={handleInputChange} required
-                  />
-                </div>
-                <div className="card-box">
-                  <span className="details">Message</span>
-                  <textarea
-                    id="text"
-                    name="message"
-                    cols="18"
-                    rows="10"
-                    placeholder="Enter your message here"
-                    value={formData.message}
-                    onChange={handleInputChange} required
-                  ></textarea>
-                </div>
+          <form className="form-contact" onSubmit={formik.handleSubmit}>
+            <div className="form-card-details">
+              <div className="card-box">
+                <span className="details">First Name</span>
+
+                <input
+                  type="text"
+                  name="firstName"
+                  placeholder="First Name"
+                  value={formik.values.firstName}
+                  onChange={formik.handleChange}
+                />
+                {formik.errors.firstName && <p>{formik.errors.firstName}</p>}
               </div>
-              <div className="form-submit-btn">
-                <button className="form-btn" type="submit">
-                  Send
-                </button>
+              <div className="card-box">
+                <span className="details">Last Name</span>
+                <input
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
+                  value={formik.values.lastName}
+                  onChange={formik.handleChange}
+                  required
+                />
+                {formik.errors.lastName && <p>{formik.errors.lastName}</p>}
               </div>
-            </form>
+              <div className="card-box">
+                <span className="details">Email</span>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
+                  required
+                />
+                {formik.errors.email && <p>{formik.errors.email}</p>}
+              </div>
+              <div className="card-box">
+                <span className="details">Message</span>
+                <textarea
+                  id="text"
+                  name="message"
+                  cols="18"
+                  rows="10"
+                  placeholder="Enter your message here"
+                  value={formik.values.message}
+                  onChange={formik.handleChange}
+                  required
+                ></textarea>
+                {formik.errors.message && <p>{formik.errors.message}</p>}
+              </div>
+            </div>
+            <div className="form-submit-btn">
+              <button className="form-btn" type="submit">
+                Send
+              </button>
+            </div>
+          </form>
         </div>
-      
       </div>
     </section>
   );
