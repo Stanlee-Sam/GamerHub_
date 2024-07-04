@@ -1,18 +1,28 @@
 import "./signup.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import { apiUrl } from "../../utils/config";
+// import { Axios } from "axios";
 
 const Signup = () => {
-  
-   const navigate = useNavigate()
+  const navigate = useNavigate();
   const validationSchema = Yup.object({
-    fname: Yup.string().min(4, "First name should be a minimum of four characters").required("First name is required"),
-    lname: Yup.string().min(4, "Last name should be a minimum of four characters").required("Last name is required"),
-    email: Yup.string().email("Invalid email address").required("Email is required"),
-    password: Yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
-    cpassword: Yup.string().oneOf([Yup.ref("password"), null], "Passwords must match").required("Confirm password is required"),
+    fname: Yup.string()
+      .min(4, "First name should be a minimum of four characters")
+      .required("First name is required"),
+    lname: Yup.string()
+      .min(4, "Last name should be a minimum of four characters")
+      .required("Last name is required"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .required("Password is required"),
+    cpassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Passwords must match")
+      .required("Confirm password is required"),
   });
 
   const formik = useFormik({
@@ -26,26 +36,24 @@ const Signup = () => {
     validationSchema,
     onSubmit: async (values) => {
       try {
-        const response = await fetch(
-          `${apiUrl}/api/users/register`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              firstName: values.fname,
-              lastName: values.lname,
-              email: values.email,
-              password: values.password,
-            }),
-          }
-        );
+        const response = await fetch(`${apiUrl}/api/users/register`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            firstName: values.fname,
+            lastName: values.lname,
+            email: values.email,
+            password: values.password,
+          }),
+        });
+
+        // const response  = await Axios.post(`${apiUrl}/api/users/register`, values)
 
         if (response.ok) {
           navigate("/login");
-          
-        }else {
+        } else {
           throw new Error("Network response was not ok");
         }
 

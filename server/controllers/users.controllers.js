@@ -1,6 +1,14 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+
 const prisma = new PrismaClient();
+
+const generateToken = (user) => {
+    return jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+      expiresIn: '30h', 
+    });
+  };
 
 export const validateInformation = async (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
@@ -41,24 +49,81 @@ export const validateInformation = async (req, res, next) => {
 };
 
 export const createUser = async (req, res) => {
-    const { firstName, lastName, email, password } = req.body;
+  const { firstName, lastName, email, password } = req.body;
+
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = await prisma.user.create({
+      data: {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: hashedPassword,
+      },
+    });
+
+    res
+      .status(200)
+      .json({ success: true, message: "Sign up successful", newUser });
+  } catch (e) {
+    console.error("Error creating user:", e);
+    res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+};
+
+// export const loginUser = async (req, res) => {
+//   const { email, password } = req.body;
+//   try {
+//     const user = await prisma.user.findFirst({
+//       where: { email },
+//     });
+//     if (user) {
+//       const passwordMatch = bcrypt.compareSync(password, user.password);
+//       if (passwordMatch === true) {
+//         const payload = {
+//           id: user.id,
+//           firstName: user.firstName,
+//           lastName: user.lastName,
+//           email: user.email,
+//         };
+//         const token = jwt.sign(payload, process.env.JWT_SECRET, {
+//           expiresIn: "168h",
+//         });
+//         res.cookie("access_token", token);
+//         res.status(200).json({ success: true, data: payload });
+//       } else {
+//         res
+//           .status(400)
+//           .json({ success: false, message: "Wrong user credentials" });
+//       }
+//     } else {
+//       res.status(400).json({ success: false, message: "User not found" });
+//     }
+//   } catch (e) {
+//     res.status(500).json({ success: false, message: e.message });
+//   }
+// };
+
+export const loginUser = async (req, res) => {
+    const { email, password } = req.body;
   
     try {
-      const hashedPassword = await bcrypt.hash(password, 10); 
-      const newUser = await prisma.user.create({
-        data: {
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          password: hashedPassword,
-        },
+      const user = await prisma.user.findFirst({ where: { email } });
+      if (!user || !bcrypt.compareSync(password, user.password)) {
+        return res.status(401).json({ success: false, message: "Invalid email or password" });
+      }
+  
+      const token = generateToken(user); 
+      res.cookie('token', token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict',
       });
   
-      res
-        .status(200)
-        .json({ success: true, message: "Sign up successful", newUser });
-    } catch (e) {
-      console.error("Error creating user:", e);
+      res.status(200).json({ success: true, message: "Login successful",token });
+    } catch (error) {
+      console.error("Error logging in user:", error);
       res.status(500).json({ success: false, message: "Internal Server Error" });
     }
   };
+
