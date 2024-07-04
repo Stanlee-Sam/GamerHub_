@@ -17,9 +17,9 @@ model user {
   id String @id @default(uuid())
   firstName String
   lastName String
-  emailAddress String
+  email String
   password String
-  @@unique([emailAddress])
+  @@unique([email])
   @@map("users_table")
 
 }

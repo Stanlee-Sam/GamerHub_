@@ -7,8 +7,8 @@ const Login = () => {
     email: Yup.string()
       .email("Invalid email address"),
       
-    // password: Yup.string()
-    //   .required('Password is required'),
+    password: Yup.string()
+      .required('Password is required'),
   });
 
   const formik = useFormik({
