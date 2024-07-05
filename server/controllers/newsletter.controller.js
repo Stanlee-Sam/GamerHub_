@@ -9,7 +9,7 @@ export const subscribeNewsletter = async (req, res) => {
         email: email,
       },
     });
-    res.status(200).json({ success: true, message: "Subscription Successful" });
+    res.status(200).json({ success: true, message: "Subscription Successful", newSubscription });
   } catch (e) {
     res.status(500).json({ success: false, message: e.message });
   }

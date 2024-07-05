@@ -2,6 +2,8 @@ import express from "express";
 import { config } from "dotenv";
 import usersRoute from "./routes/users.routes.js";
 import newsletterRoute from "./routes/newsletter.routes.js";
+import contactRoute from "./routes/contact.routes.js";
+import productRoute from "./routes/products.routes.js";
 import cors from "cors";
 import cookieParser from 'cookie-parser';
 
@@ -24,7 +26,8 @@ app.use(cookieParser());
 
 app.use("/api/users", usersRoute);
 app.use("/api/newsletter", newsletterRoute);
-
+app.use("/api/contact", contactRoute);
+app.use("/api/products", productRoute);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

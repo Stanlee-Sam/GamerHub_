@@ -31,3 +31,24 @@ model NewsletterSubscription {
   @@unique([email])
   @@map("newsletter_subscriptions_table")
 }
+
+model contact {
+  id String @id @default(uuid())
+  firstName String
+  lastName String
+  email String
+  message String
+  @@unique([email])
+  @@map("contacts_table")
+}
+
+model Product {
+  id String @id @default(uuid())
+  name String
+  description String
+  price Float
+  images String[]
+  category String
+  @@unique([name])
+  @@map("products_table")
+}

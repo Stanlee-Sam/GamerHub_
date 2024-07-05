@@ -3,7 +3,7 @@ import "./contact.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import * as Yup from "yup";
-import axios from "axios";
+import { apiUrl } from "../../utils/config";
 
 const Contact = () => {
   const validationSchema = Yup.object({
@@ -28,14 +28,25 @@ const Contact = () => {
     validationSchema,
     onSubmit: async (values) => {
       try {
-        const response = await axios.post("/api/contact", {
-          firstName: values.firstName,
-          lastName: values.lastName,
-          email: values.email,
-          message: values.message,
+        const response = await fetch(`${apiUrl}/api/contact/send`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            firstName: values.firstName,
+            lastName: values.lastName,
+            email: values.email,
+            message: values.message,
+          }),
         });
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
 
         alert("Message sent successfully!");
+        console.log(data);
       } catch (e) {
         console.error("There was an error sending the message", e);
         alert("Error sending the message, please try again.");
