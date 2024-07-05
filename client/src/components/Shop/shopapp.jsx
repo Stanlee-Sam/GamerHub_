@@ -1,13 +1,25 @@
 import { Link } from "react-router-dom";
 import "./shopapp.css";
+import  { useState }from "react";
 const Shopapp = () => {
+
+  
+
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (event) => {
+    const query = event.target.value.toLowerCase();
+    setSearchQuery(query);
+  };
+ 
   return (
     <section className="shop-main">
       <br />
       <br />
       <br />
       <div className="search-bar">
-        <input type="text" placeholder="Search" />
+        <input type="text" placeholder="Search" value={searchQuery} onChange={handleSearch} />
+        <button className="search-btn">Search</button>
       </div>
       <div className="types-bar">
         <Link to="/shop/all" className="type-link">

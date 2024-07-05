@@ -49,7 +49,7 @@ const Signup = () => {
           }),
         });
 
-        // const response  = await Axios.post(`${apiUrl}/api/users/register`, values)
+        
 
         if (response.ok) {
           navigate("/login");

@@ -1,6 +1,7 @@
 import express from "express";
 import { config } from "dotenv";
 import usersRoute from "./routes/users.routes.js";
+import newsletterRoute from "./routes/newsletter.routes.js";
 import cors from "cors";
 import cookieParser from 'cookie-parser';
 
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api/users", usersRoute);
+app.use("/api/newsletter", newsletterRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

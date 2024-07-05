@@ -15,9 +15,7 @@ const Shopjunction = () => {
         <Route path="/pcs" element={<Pcs />} />
         <Route path="/accessories" element={<Accessories />} />
 
-        {/* <Route path="/all" element={<All />} />
-    <Route path="/all" element={<All />} />
-    <Route path="/all" element={<All />} /> */}
+        
       </Routes>
     </>
   );
