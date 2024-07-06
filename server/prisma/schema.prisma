@@ -49,6 +49,8 @@ model Product {
   price Float
   images String[]
   category String
+  rating Float? @default(0)
+  isNewArrival Boolean  @default(false)
   @@unique([name])
   @@map("products_table")
 }

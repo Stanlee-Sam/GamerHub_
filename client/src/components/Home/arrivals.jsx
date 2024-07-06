@@ -1,9 +1,41 @@
-
+import  { useEffect, useState } from "react";
 import "./arrivals.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { apiUrl } from "../../utils/config";
 
 const Arrivals = () => {
+  const [newArrivals, setNewArrivals] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchNewArrivals = async () => {
+      try {
+        const response = await fetch(`${apiUrl}/api/products/new-arrivals`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch new arrivals");
+        }
+        const data = await response.json();
+        setNewArrivals(data.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("No new arrivals:", error);
+        setError(error.message);
+        setLoading(false);
+      }
+    };
+
+    fetchNewArrivals();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    return <div> {error}</div>;
+  }
+
   const renderStars = (rating) => {
     return (
       <div className="rating">
@@ -17,102 +49,33 @@ const Arrivals = () => {
       </div>
     );
   };
+
   return (
     <section className="arrivals-section">
       <h3>New Arrivals</h3>
       <div className="all-container">
-      <div className="item-container">
-        <div className="img-container">
-          <img src="../../../src/assets/Xbox one S 500G.jpeg" alt="" />
-        </div>
-        <div className="body-container">
-          <div className="body-container">
-            <div className="overlay"></div>
-            <div className="event-info">
-              <p className="title">Xbox One S 500GB</p>
-              <div className="separator"></div>
-
-              <div className="additional-info">
-                <p className="info">{renderStars(4)}</p>
-
-                <p className="info-description">
-                  Explore the world of Xbox with Xbox One S<p>Ksh 53,000</p>
-                </p>
-              </div>
+        {newArrivals.map((product) => (
+          <div className="item-container" key={product.id}>
+            <div className="img-container">
+              <img src={product.images[0]} alt={product.name} />
             </div>
-            <button className="action">Add to cart</button>
-          </div>
-        </div>
-      </div>
-      <div className="item-container">
-        <div className="img-container">
-          <img src="../../../src/assets/Xbox one S 500G.jpeg" alt="" />
-        </div>
-        <div className="body-container">
-          <div className="body-container">
-            <div className="overlay"></div>
-            <div className="event-info">
-              <p className="title">Xbox One S 500GB</p>
-              <div className="separator"></div>
-
-              <div className="additional-info">
-                <p className="info">{renderStars(4)}</p>
-
-                <p className="info-description">
-                  Explore the world of Xbox with Xbox One S<p>Ksh 53,000</p>
-                </p>
+            <div className="body-container">
+              <div className="overlay"></div>
+              <div className="event-info">
+                <p className="title">{product.name}</p>
+                <div className="separator"></div>
+                <div className="additional-info">
+                  <p className="info">{renderStars(product.rating)}</p>
+                  <p className="info-description">
+                    {product.description}
+                    <p>Ksh {product.price}</p>
+                  </p>
+                </div>
               </div>
+              <button className="action">Add to cart</button>
             </div>
-            <button className="action">Add to cart</button>
           </div>
-        </div>
-      </div>
-      <div className="item-container">
-        <div className="img-container">
-          <img src="../../../src/assets/Xbox one S 500G.jpeg" alt="" />
-        </div>
-        <div className="body-container">
-          <div className="body-container">
-            <div className="overlay"></div>
-            <div className="event-info">
-              <p className="title">Xbox One S 500GB</p>
-              <div className="separator"></div>
-
-              <div className="additional-info">
-                <p className="info">{renderStars(4)}</p>
-
-                <p className="info-description">
-                  Explore the world of Xbox with Xbox One S<p>Ksh 53,000</p>
-                </p>
-              </div>
-            </div>
-            <button className="action">Add to cart</button>
-          </div>
-        </div>
-      </div>
-      <div className="item-container">
-        <div className="img-container">
-          <img src="../../../src/assets/Xbox one S 500G.jpeg" alt="" />
-        </div>
-        <div className="body-container">
-          <div className="body-container">
-            <div className="overlay"></div>
-            <div className="event-info">
-              <p className="title">Xbox One S 500GB</p>
-              <div className="separator"></div>
-
-              <div className="additional-info">
-                <p className="info">{renderStars(4)}</p>
-
-                <p className="info-description">
-                  Explore the world of Xbox with Xbox One S<p>Ksh 53,000</p>
-                </p>
-              </div>
-            </div>
-            <button className="action">Add to cart</button>
-          </div>
-        </div>
-      </div>
+        ))}
       </div>
     </section>
   );
