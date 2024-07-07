@@ -2,10 +2,16 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { apiUrl } from "../../utils/config";
+import { useNavigate } from "react-router-dom";
+import Cart from "../Home/cart";
+
 const All = () => {
+  const navigate = useNavigate();
+
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     fetchProducts();
@@ -40,9 +46,35 @@ const All = () => {
     );
   };
 
+  const handleProductClick = (productId) => {
+    navigate(`/product/${productId}`);
+  };
+
+  const handleAddToCart = (productId) => {
+    const productToAdd = products.find((product) => product.id === productId);
+    if (productToAdd) {
+      
+      const existingProduct = cart.find((item) => item.id === productId);
+      if (existingProduct) {
+        
+        const updatedCart = cart.map((item) =>
+          item.id === productId
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+        setCart(updatedCart);
+      } else {
+       
+        setCart([...cart, { ...productToAdd, quantity: 1 }]);
+      }
+      console.log(`Added product ${productId} to cart`);
+    }
+  };
+
   if (loading) return <p>Loading...</p>;
 
-  if (error) return <p> Error: {error}</p>;
+  if (error) return <p>Error: {error}</p>;
+
   return (
     <section className="all-products">
       <h3>All products</h3>
@@ -53,97 +85,25 @@ const All = () => {
               <img src={product.images[0]} alt={product.name} />
             </div>
             <div className="body-container">
-              <div className="body-container">
-                <div className="overlay"></div>
-                <div className="event-info">
-                  <p className="title">{product.name}</p>
-                  <div className="separator"></div>
-
-                  <div className="additional-info">
-                    <p className="info">{renderStars(product.rating)}</p>
-
-                    <p className="info-description">
-                      {product.description}
-                      <p>Ksh {product.price}</p>
-                    </p>
-                  </div>
+              <div className="overlay"></div>
+              <div className="event-info" onClick={() => handleProductClick(product.id)}>
+                <p className="title">{product.name}</p>
+                <div className="separator"></div>
+                <div className="additional-info">
+                  <p className="info">{renderStars(product.rating)}</p>
+                  <p className="info-description">
+                    {product.description}
+                    <p>Ksh {product.price}</p>
+                  </p>
                 </div>
-                <button className="action">Add to cart</button>
               </div>
+              <button className="action" onClick={() => handleAddToCart(product.id)}>Add to cart</button>
             </div>
           </div>
         ))}
-
-        {/* <div className="item-container">
-          <div className="img-container">
-            <img src="../../../src/assets/Xbox one S 500G.jpeg" alt="" />
-          </div>
-          <div className="body-container">
-            <div className="body-container">
-              <div className="overlay"></div>
-              <div className="event-info">
-                <p className="title">Xbox One S 500GB</p>
-                <div className="separator"></div>
-
-                <div className="additional-info">
-                  <p className="info">{renderStars(4)}</p>
-
-                  <p className="info-description">
-                    Explore the world of Xbox with Xbox One S<p>Ksh 53,000</p>
-                  </p>
-                </div>
-              </div>
-              <button className="action">Add to cart</button>
-            </div>
-          </div>
-        </div>
-        <div className="item-container">
-          <div className="img-container">
-            <img src="../../../src/assets/Xbox one S 500G.jpeg" alt="" />
-          </div>
-          <div className="body-container">
-            <div className="body-container">
-              <div className="overlay"></div>
-              <div className="event-info">
-                <p className="title">Xbox One S 500GB</p>
-                <div className="separator"></div>
-
-                <div className="additional-info">
-                  <p className="info">{renderStars(4)}</p>
-
-                  <p className="info-description">
-                    Explore the world of Xbox with Xbox One S<p>Ksh 53,000</p>
-                  </p>
-                </div>
-              </div>
-              <button className="action">Add to cart</button>
-            </div>
-          </div>
-        </div>
-        <div className="item-container">
-          <div className="img-container">
-            <img src="../../../src/assets/Xbox one S 500G.jpeg" alt="" />
-          </div>
-          <div className="body-container">
-            <div className="body-container">
-              <div className="overlay"></div>
-              <div className="event-info">
-                <p className="title">Xbox One S 500GB</p>
-                <div className="separator"></div>
-
-                <div className="additional-info">
-                  <p className="info">{renderStars(4)}</p>
-
-                  <p className="info-description">
-                    Explore the world of Xbox with Xbox One S<p>Ksh 53,000</p>
-                  </p>
-                </div>
-              </div>
-              <button className="action">Add to cart</button>
-            </div>
-          </div>
-        </div> */}
       </div>
+      
+      <Cart cart={cart} setCart={setCart} />
     </section>
   );
 };

@@ -4,8 +4,10 @@ import usersRoute from "./routes/users.routes.js";
 import newsletterRoute from "./routes/newsletter.routes.js";
 import contactRoute from "./routes/contact.routes.js";
 import productRoute from "./routes/products.routes.js";
+
+import uploadRoute from "./routes/upload.routes.js";
 import cors from "cors";
-import cookieParser from 'cookie-parser';
+import cookieParser from "cookie-parser";
 
 config();
 const app = express();
@@ -28,6 +30,7 @@ app.use("/api/users", usersRoute);
 app.use("/api/newsletter", newsletterRoute);
 app.use("/api/contact", contactRoute);
 app.use("/api/products", productRoute);
+app.use("/api/upload", uploadRoute);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

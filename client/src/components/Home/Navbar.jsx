@@ -21,7 +21,7 @@ const Navbar = () => {
         <div className="nav-icons">
           
           <Link to="/cart"><FontAwesomeIcon icon={faShoppingCart} /></Link>
-          <Link to="/cart"><FontAwesomeIcon icon={faUser} /></Link>
+          <Link to="/user"><FontAwesomeIcon icon={faUser} /></Link>
 
             
         
