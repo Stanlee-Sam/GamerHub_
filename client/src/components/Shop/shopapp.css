@@ -7,7 +7,8 @@
   --alt-color3: #0f1432;
 }
 .search-bar {
-  display: grid;
+  display: flex;
+  
   justify-content: center;
   align-items: center;
   height: 10vh;
@@ -20,6 +21,19 @@
   outline: none;
   padding: 0 10px;
   font-size: 10px;
+}
+.search-bar button {
+  width: 60px;
+  height: 40px;
+  border-radius: 10px;
+  outline: none;
+  padding: 0 10px;
+  font-size: 10px;
+  background-color: var(--alt-color2);
+  color: var(--secondary-color);
+  border: none;
+  cursor: pointer;
+  margin: 10px;
 }
 
 .types-bar {
@@ -38,33 +52,54 @@
 .type-link.active {
   background-color: #333;
   color: #fff;
-  text-decoration: underline; /* Underline the active link */
+  text-decoration: underline; 
 }
 
-/* .banner-shop {
-  height: 50vh;
-} */
+.banner-shop {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  
+  
+}
 
 .card-banner {
+  align-self: center;
   display: inline-flex;
   justify-items: center;
   place-items: center;
   align-items: center;
   width: 90%;
-  height: 375px;
+  height: 200px;
   background-color: var(--alt-color3);
   border-radius: 15px;
-  margin-top: 30px;
+  /* margin-top: 30px; */
   margin-bottom: 30px;
 
 }
 
 .ban-img {
-  background: url(../../assets/products_banner.jpeg) fixed no-repeat;
-  height: 375px;
-  width: 50%;
+  background: url(../../assets/products_banner.jpeg) no-repeat ;
+  background-size: cover;
+  background-position: center;
+  
+  height: 200px;
+  width: 200px;
   border-radius: 15px;
 }
 .det {
-  width: 50%;
+  width: 60%;
+}
+.det h2{
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 30px;
+}
+
+.det p {
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 20px;
 }

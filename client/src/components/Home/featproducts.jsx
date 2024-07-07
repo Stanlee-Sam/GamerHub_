@@ -96,10 +96,10 @@ const Featproducts = () => {
         </div>
         <div className="button">
           <button className="prev" onClick={moveToPrev}>
-            <i className="fa-solid fa-arrow-left"></i>
+          <FontAwesomeIcon icon={faArrowLeft} />
           </button>
           <button className="next" onClick={moveToNext}>
-            <i className="fa-solid fa-arrow-right"></i>
+          <FontAwesomeIcon icon={faArrowRight} />
           </button>
         </div>
       </div>

@@ -1,24 +1,28 @@
 import { Link } from "react-router-dom";
 import "./shopapp.css";
-import  { useState }from "react";
+import { useState } from "react";
+import All from "./all"; 
+
 const Shopapp = () => {
-
-  
-
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = (event) => {
     const query = event.target.value.toLowerCase();
     setSearchQuery(query);
   };
- 
+
   return (
     <section className="shop-main">
       <br />
       <br />
       <br />
       <div className="search-bar">
-        <input type="text" placeholder="Search" value={searchQuery} onChange={handleSearch} />
+        <input
+          type="text"
+          placeholder="Search"
+          value={searchQuery}
+          onChange={handleSearch}
+        />
         <button className="search-btn">Search</button>
       </div>
       <div className="types-bar">
@@ -48,6 +52,9 @@ const Shopapp = () => {
           <div className="ban-img"></div>
         </div>
       </div>
+
+      
+      <All searchQuery={searchQuery} />
     </section>
   );
 };

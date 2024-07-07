@@ -2,7 +2,7 @@ import "./newsletter.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { apiUrl } from "../../utils/config";
-// import axios from 'axios';
+
 
 const Newsletter = () => {
   const validationSchema = Yup.object({

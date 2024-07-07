@@ -19,13 +19,12 @@ const Navbar = () => {
           <Link to="/contact">Contact Us</Link>
         </li>
         <div className="nav-icons">
-          
-          <Link to="/cart"><FontAwesomeIcon icon={faShoppingCart} /></Link>
-          <Link to="/user"><FontAwesomeIcon icon={faUser} /></Link>
-
-            
-        
-          
+          <Link to= "/cartpage">
+            <FontAwesomeIcon icon={faShoppingCart} />
+          </Link>
+          <Link to="/user">
+            <FontAwesomeIcon icon={faUser} />
+          </Link>
         </div>
       </div>
     </section>

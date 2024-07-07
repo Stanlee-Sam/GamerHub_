@@ -104,7 +104,7 @@ Cart.propTypes = {
       quantity: PropTypes.number.isRequired,
     })
   ).isRequired,
-  setCart: PropTypes.func.isRequired,
+  setCart: PropTypes.func,
 };
 
 export default Cart;
