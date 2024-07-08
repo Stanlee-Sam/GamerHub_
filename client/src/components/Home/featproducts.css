@@ -7,7 +7,7 @@
 }
 .featdest-section {
   background-color: var(--alt-color2);
-  height: 200vh;
+  min-height: 120vh;
 }
 .featdest-container {
   position: absolute;

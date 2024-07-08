@@ -64,3 +64,52 @@
   width: 50%;
   height: 100vh;
 }
+/*Media query break points
+  /* 2xl */
+  @media (max-width: 1536px) {
+  }
+  
+  /* xl */
+  @media (max-width: 1280px) {
+  }
+  
+  /* lg */
+  @media (max-width: 1024px) {
+    .hero-title {
+      padding-left: 0px;
+    }
+
+
+    .hero-img {
+      background-size: cover;
+      background: url(../../assets/Hero.jpeg) ;
+      width: 50%;
+      height: 100vh;
+    }
+
+    .hero-btn button{
+      width: 100px;
+      font-size: 13px;
+    }
+    .hero-title h1 {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+    .hero-title p {
+      font-size: 10px;
+      font-weight: 100;
+    }
+  }
+  
+  /* md */
+  @media (max-width: 768px) {
+  }
+  
+  /* sm */
+  @media (max-width: 640px) {
+  }
+  
+  /* xs */
+  @media (max-width: 475px) {
+  }
+  

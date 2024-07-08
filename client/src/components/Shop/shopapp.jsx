@@ -38,9 +38,9 @@ const Shopapp = () => {
         <Link to="/shop/accessories" className="type-link">
           Accessories
         </Link>
-        <Link to="/shop/upload" className="type-link">
+        {/* <Link to="/shop/upload" className="type-link">
           Add
-        </Link>
+        </Link> */}
       </div>
 
       <div className="banner-shop">

@@ -3,7 +3,7 @@ import About from "./about";
 import Featproducts from "./featproducts";
 import Arrivals from "./arrivals";
 import Newsletter from "./newsletter";
-import Product from "../product/product";
+// import Product from "../product/product";
 const Home = () => {
   return (
     <>
@@ -12,7 +12,7 @@ const Home = () => {
     <Featproducts/>
     <Arrivals/>
     <Newsletter/>
-    <Product/>
+    {/* <Product/> */}
 
     </>
    

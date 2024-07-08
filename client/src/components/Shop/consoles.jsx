@@ -47,8 +47,8 @@ const Consoles = () => {
   if (error) return <p> Error: {error}</p>;
   return (
     <section className="accessories-section">
-      <h1>Accessories</h1>
-      <p>All the accessories here</p>
+      <h1>Consoles</h1>
+      <p>All the consoles available</p>
       <div className="all-container">
         {products.map((product) => (
           <div className="item-container" key={product.id}>

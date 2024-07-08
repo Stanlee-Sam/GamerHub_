@@ -22,7 +22,7 @@ const Navbar = () => {
           <Link to= "/cartpage">
             <FontAwesomeIcon icon={faShoppingCart} />
           </Link>
-          <Link to="/user">
+          <Link to="/signup">
             <FontAwesomeIcon icon={faUser} />
           </Link>
         </div>

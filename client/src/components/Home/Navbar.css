@@ -54,3 +54,51 @@
 .Navbar .nav-links .nav-icons a:hover {
   color: var(--alt-color);
 }
+/*Media query break points
+  /* 2xl */
+  @media (max-width: 1080px) {
+  }
+  
+  /* xl */
+  @media (max-width: 1280px) {
+  }
+  
+  /* lg */
+  @media (max-width: 1024px) {
+  }
+  
+  /* md */
+  @media (max-width: 768px) {
+  }
+  
+  /* sm */
+  @media (max-width: 650px) {
+    .Navbar {
+      height: 10vh;
+    }
+
+    .Navbar h1{
+      font-size: 15px;
+    }
+
+    .Navbar .nav-links li a{
+      font-size: 10px;
+    }
+    .Navbar .nav-links .nav-icons a {
+      font-size: 7px;
+      margin: 5px;
+    }
+  }
+  
+  /* xs */
+  @media (max-width: 475px) {
+    .Navbar {
+      display: grid;
+      justify-content: center;
+    }
+
+    .Navbar h1{
+      text-align: center;
+    }
+  }
+  

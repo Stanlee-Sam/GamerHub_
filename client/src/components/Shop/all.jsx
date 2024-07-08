@@ -224,7 +224,7 @@ const All = ({ searchQuery = "", cart, setCart }) => {
 
 All.propTypes = {
   searchQuery: PropTypes.string,
-  cart: PropTypes.array.isRequired,
+  cart: PropTypes.array,
   setCart: PropTypes.func.isRequired
 };
 

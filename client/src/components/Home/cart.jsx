@@ -34,13 +34,13 @@ const Cart = ({ cart, setCart }) => {
         <p>Quantity</p>
         <p>Total</p>
       </div>
+      <hr />
       {cart && cart.length > 0 ? (
         cart.map((product) => (
           <div className="prod-details" key={product.id}>
             <div className="img-details">
               <img src={product.images[0]} alt={product.name} />
-            </div>
-            <div className="desop">
+              <div className="desop">
               <p>{product.name}</p>
               {/* <p>{product.description}</p> */}
               <p>
@@ -49,6 +49,8 @@ const Cart = ({ cart, setCart }) => {
                 </a>
               </p>
             </div>
+            </div>
+          
             <div className="priceop">
               <p>Ksh {product.price}</p>
             </div>
@@ -79,6 +81,7 @@ const Cart = ({ cart, setCart }) => {
       ) : (
         <p>Your cart is empty.</p>
       )}
+      <hr />
       <div className="summary">
         <div className="total-amount">
           <p>Subtotal</p>
