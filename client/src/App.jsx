@@ -1,8 +1,9 @@
 import { useState,useEffect } from "react";
 import Signup from "./components/signup/signup";
+import Home from "./components/Home/home";
 import Login from "./components/login/login";
 import Navbar from "./components/Home/Navbar";
-import Home from "./components/Home/home";
+// import Home from "./components/Home/home";
 import Contact from "./components/contact/contact";
 import Footer from "./components/Home/footer";
 // import Cart from "./components/Home/cart";
@@ -18,15 +19,14 @@ const App = () => {
     setCart(storedCart);
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
+  
 
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/" element={<Login />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/shop/*" element={<Shopjunction cart={cart} setCart={setCart} />} />
         <Route path="/contact" element={<Contact />} />
         {/* <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} /> */}

@@ -1,4 +1,4 @@
-import "../signup/signup.css";
+import "./login.css";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -51,7 +51,7 @@ const Login = () => {
   });
 
   return (
-    <section className="auth-page">
+    <section className="login-auth-page">
       <form className="auth-form" onSubmit={formik.handleSubmit}>
         <h2>Login</h2>
 

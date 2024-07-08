@@ -3,6 +3,7 @@ import "./arrivals.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { apiUrl } from "../../utils/config";
+import "./arrivals.css";
 
 const Arrivals = () => {
   const [newArrivals, setNewArrivals] = useState([]);
