@@ -1,12 +1,14 @@
 import "./login.css";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+// import { useNavigate } from "react-router-dom";
 
 // import { apiUrl } from "../../utils/config";
 
 const apiUrl = import.meta.env.VITE_API_URL_BASE;
 
 const Login = () => {
+  // const navigate = useNavigate();
   const validationSchema = Yup.object({
     email: Yup.string()
       .email("Invalid email address")
@@ -39,8 +41,8 @@ const Login = () => {
         const data = await response.json();
 
         if (data.success) {
-          // localStorage.setItem("token", data.token);
-          window.location.href = "/";
+          localStorage.setItem("token", data.token);
+          window.location.href = "/home";
         } else {
           alert("Invalid email or password");
         }
@@ -83,8 +85,8 @@ const Login = () => {
           {formik.errors.password && formik.touched.password && <p>{formik.errors.password}</p>}
         </div>
 
-        <button type="submit">Log In</button>
-
+        <button type="submit" >Log In</button>
+        {/* const navigate = useNavigate(); */}
         <p>
           Don't have an account? <a href="/signup">Sign up</a>
         </p>
