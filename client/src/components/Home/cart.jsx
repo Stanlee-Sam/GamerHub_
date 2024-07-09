@@ -1,19 +1,27 @@
 import PropTypes from "prop-types";
 import "./cart.css";
+import { toast } from 'react-toastify' 
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Cart = ({ cart, setCart }) => {
+  
   const handleRemoveClick = (productId) => {
     const updatedCart = cart.filter((product) => product.id !== productId);
     setCart(updatedCart);
+    toast.success("Item removed from cart");
   };
-
   const handleQuantityChange = (productId, newQuantity) => {
+    if (newQuantity < 1) {
+      toast.error("Quantity cannot be less than 1");
+      return;
+    }
     const updatedCart = cart.map((product) =>
       product.id === productId ? { ...product, quantity: newQuantity } : product
     );
     setCart(updatedCart);
+    toast.success("Item quantity updated");
   };
-
   const calculateSubtotal = () => {
     if (!cart || cart.length === 0) {
       return 0;
@@ -27,6 +35,7 @@ const Cart = ({ cart, setCart }) => {
 
   return (
     <section className="cart-page">
+      
       <h3>Cart</h3>
       <div className="headline">
         <p>Product</p>
@@ -42,7 +51,7 @@ const Cart = ({ cart, setCart }) => {
               <img src={product.images[0]} alt={product.name} />
               <div className="desop">
               <p>{product.name}</p>
-              {/* <p>{product.description}</p> */}
+              
               <p>
                 <a href="#" onClick={() => handleRemoveClick(product.id)}>
                   Remove

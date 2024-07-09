@@ -4,7 +4,7 @@ import usersRoute from "./routes/users.routes.js";
 import newsletterRoute from "./routes/newsletter.routes.js";
 import contactRoute from "./routes/contact.routes.js";
 import productRoute from "./routes/products.routes.js";
-
+import cartRoute from "./routes/cart.routes.js"
 import uploadRoute from "./routes/upload.routes.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
@@ -31,6 +31,7 @@ app.use("/api/newsletter", newsletterRoute);
 app.use("/api/contact", contactRoute);
 app.use("/api/products", productRoute);
 app.use("/api/upload", uploadRoute);
+app.use("/api/cart", cartRoute);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

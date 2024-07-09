@@ -11,6 +11,8 @@ import Shopjunction from "./components/Shop/shopjunction";
 import CartPage from "./components/Home/CartPage";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Admin from "./components/Admin/admin";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -24,6 +26,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
+    
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Login />} />
@@ -36,6 +39,7 @@ const App = () => {
         <Route path="/cartpage" element={<CartPage cart={cart} setCart={setCart} />} />
       </Routes>
       <Footer />
+      <ToastContainer/>
     </BrowserRouter>
   );
 };

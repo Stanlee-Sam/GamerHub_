@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { apiUrl } from "../../utils/config";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const All = ({ searchQuery = "", cart, setCart }) => {
   const navigate = useNavigate();
@@ -15,26 +17,27 @@ const All = ({ searchQuery = "", cart, setCart }) => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(`${apiUrl}/api/products`);
-        const products = response.data.data; 
-    
+        const products = response.data.data;
+
         if (!products || !Array.isArray(products)) {
-          throw new Error('Invalid response structure: products array not found');
+          throw new Error("Invalid response structure: products array not found");
         }
-    
+
         const filtered = products.filter((product) =>
           product.name.toLowerCase().includes(searchQuery.toLowerCase())
         );
-    
+
         setFilteredProducts(filtered);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching products:", error);
+        toast.error("Failed to fetch products");
         setLoading(false);
       }
     };
 
     fetchProducts();
-  }, [searchQuery]); 
+  }, [searchQuery]);
 
   const renderStars = (rating) => {
     return (
@@ -60,28 +63,28 @@ const All = ({ searchQuery = "", cart, setCart }) => {
       const existingProduct = cart.find((item) => item.id === productId);
       if (existingProduct) {
         const updatedCart = cart.map((item) =>
-          item.id === productId
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
+          item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
         );
         setCart(updatedCart);
       } else {
         setCart([...cart, { ...productToAdd, quantity: 1 }]);
       }
       console.log(`Added product ${productId} to cart`);
+      toast.success(`Added ${productToAdd.name} to cart`);
     }
   };
 
   if (loading) {
-    return <p>Loading...</p>; // Placeholder for loading state
+    return <p>Loading...</p>;
   }
 
   if (filteredProducts.length === 0) {
-    return <p>No products found.</p>; // Handle case where no products match the search criteria or are fetched
+    return <p>No products found.</p>;
   }
 
   return (
     <section className="all-products">
+      
       <h3>All products</h3>
       <div className="all-container">
         {filteredProducts.map((product) => (
@@ -91,10 +94,7 @@ const All = ({ searchQuery = "", cart, setCart }) => {
             </div>
             <div className="body-container">
               <div className="overlay"></div>
-              <div
-                className="event-info"
-                onClick={() => handleProductClick(product.id)}
-              >
+              <div className="event-info" onClick={() => handleProductClick(product.id)}>
                 <p className="title">{product.name}</p>
                 <div className="separator"></div>
                 <div className="additional-info">
@@ -105,10 +105,7 @@ const All = ({ searchQuery = "", cart, setCart }) => {
                   </div>
                 </div>
               </div>
-              <button
-                className="action"
-                onClick={() => handleAddToCart(product.id)}
-              >
+              <button className="action" onClick={() => handleAddToCart(product.id)}>
                 Add to cart
               </button>
             </div>

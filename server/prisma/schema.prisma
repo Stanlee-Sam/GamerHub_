@@ -43,20 +43,7 @@ model contact {
   @@map("contacts_table")
 }
 
-// model Product {
-//   id String @id @default(uuid())
-//   name String
-//   description String
-//   price Float
-//   images String[]
-//   category String
-//   rating Float? @default(0)
-//   isNewArrival Boolean  @default(false)
-//   @@unique([name])
-//   @@map("products_table")
-// }
 
-// schema.prisma
 model Product {
   id           String   @id @default(uuid())
   name         String   @unique
@@ -71,3 +58,17 @@ model Product {
 
   @@map("products_table")
 }
+
+model CartItem {
+  id           String      @id @default(uuid())
+  productId    String      @unique
+  name         String
+  price        Float
+  images       String[]
+  quantity     Int
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  @@map("cart_items")
+}
+
