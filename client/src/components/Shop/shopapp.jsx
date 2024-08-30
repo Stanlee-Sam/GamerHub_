@@ -1,14 +1,19 @@
 import { Link } from "react-router-dom";
 import "./shopapp.css";
 import { useState } from "react";
-import All from "./all"; 
+import All from "./all";
 
 const Shopapp = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [cart, setCart] = useState([]);
 
   const handleSearch = (event) => {
     const query = event.target.value.toLowerCase();
     setSearchQuery(query);
+  };
+
+  const handleSearchButtonClick = () => {
+    //
   };
 
   return (
@@ -23,7 +28,9 @@ const Shopapp = () => {
           value={searchQuery}
           onChange={handleSearch}
         />
-        <button className="search-btn">Search</button>
+        <button className="search-btn" onClick={handleSearchButtonClick}>
+          Search
+        </button>
       </div>
       <div className="types-bar">
         <Link to="/shop/all" className="type-link">
@@ -38,9 +45,6 @@ const Shopapp = () => {
         <Link to="/shop/accessories" className="type-link">
           Accessories
         </Link>
-        {/* <Link to="/shop/upload" className="type-link">
-          Add
-        </Link> */}
       </div>
 
       <div className="banner-shop">
@@ -53,8 +57,8 @@ const Shopapp = () => {
         </div>
       </div>
 
-      
-      <All searchQuery={searchQuery} />
+      {/* Pass searchQuery as prop to All component */}
+      <All searchQuery={searchQuery} cart = {cart} setCart = {setCart}/>
     </section>
   );
 };

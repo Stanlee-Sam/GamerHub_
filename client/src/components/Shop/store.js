@@ -1,13 +1,13 @@
-import ps5Image1 from "/src/assets/ps 5 feat.jpeg";
-import ps4Image1 from "/src/assets/blue_ps4.jpeg";
-import xboxXImage1 from "/src/assets/xbox_x.jpeg";
-import xboxSImage1 from "/src/assets/Xbox Series S.jpeg";
-import switchImage1 from "/src/assets/Switch.jpeg";
-import gamingPcImage1 from "/src/assets/Gaming pc.jpeg";
-import gamingPcImage2 from "/src/assets/pc.jpeg";
-import gamingPcImage3 from "/src/assets/pc2.jpeg";
-import headsetImage1 from "/src/assets/headsetwhite.jpeg";
-import headsetImage2 from "/src/assets/Headset.jpeg";
+// import ps5Image1 from "../../../src/assets/ps 5 feat.jpeg";
+// import ps4Image1 from "../../../src/assets/blue_ps4.jpeg";
+// import xboxXImage1 from "../../../src/assets/xbox_x.jpeg";
+// import xboxSImage1 from "../../../src/assets/Xbox Series S.jpeg";
+// import switchImage1 from "../../../src/assets/Switch.jpeg";
+// import gamingPcImage1 from "../../../src/assets/Gaming pc.jpeg";
+// import gamingPcImage2 from "../../../src/assets/pc.jpeg";
+// import gamingPcImage3 from "../../../src/assets/pc2.jpeg";
+// import headsetImage1 from "../../../src/assets/headsetwhite.jpeg";
+// import headsetImage2 from "../../../src/assets/Headset.jpeg";
 
 const products = [
   {
@@ -15,7 +15,7 @@ const products = [
     name: "PlayStation 5",
     description: "The latest console from Sony.",
     price: 50000,
-    images: [ps5Image1, ps4Image1, "https://ibb.co/qJrb3BT"],
+    // images: [ps5Image1, ps4Image1, "https://ibb.co/qJrb3BT"],
     category: "Gaming Consoles",
     rating: 4.8,
   },
@@ -24,7 +24,7 @@ const products = [
     name: "PlayStation 4",
     description: "Popular console from Sony.",
     price: 30000,
-    images: [ps4Image1, ps4Image1, "https://ibb.co/qJrb3BT"],
+    // images: [ps4Image1, ps4Image1, "https://ibb.co/qJrb3BT"],
     category: "Gaming Consoles",
     rating: 4.8,
   },
@@ -33,7 +33,7 @@ const products = [
     name: "Xbox Series X",
     description: "The latest console from Microsoft.",
     price: 55000,
-    images: [xboxXImage1, "https://ibb.co/PzGrTL8", "https://ibb.co/qJrb3BT"],
+    // images: [xboxXImage1, "https://ibb.co/PzGrTL8", "https://ibb.co/qJrb3BT"],
     category: "Gaming Consoles",
     rating: 4.7,
   },
@@ -42,7 +42,7 @@ const products = [
     name: "Xbox Series S",
     description: "The latest console from Microsoft.",
     price: 55000,
-    images: [xboxSImage1, "https://ibb.co/PzGrTL8", "https://ibb.co/qJrb3BT"],
+    // images: [xboxSImage1, "https://ibb.co/PzGrTL8", "https://ibb.co/qJrb3BT"],
     category: "Gaming Consoles",
     rating: 4.7,
   },
@@ -51,7 +51,7 @@ const products = [
     name: "Nintendo Switch",
     description: "Portable and home gaming console.",
     price: 30000,
-    images: [switchImage1, "https://ibb.co/PzGrTL8", "https://ibb.co/qJrb3BT"],
+    // images: [switchImage1, "https://ibb.co/PzGrTL8", "https://ibb.co/qJrb3BT"],
     category: "Gaming Consoles",
     rating: 4.6,
   },
@@ -60,11 +60,11 @@ const products = [
     name: "Gaming PC",
     description: "High-end gaming PC with the latest hardware.",
     price: 100000,
-    images: [
-      gamingPcImage1,
-      "https://ibb.co/PzGrTL8",
-      "https://ibb.co/qJrb3BT",
-    ],
+    // images: [
+    //   gamingPcImage1,
+    //   "https://ibb.co/PzGrTL8",
+    //   "https://ibb.co/qJrb3BT",
+    // ],
     category: "PCs",
     rating: 4.9,
   },
@@ -73,11 +73,11 @@ const products = [
     name: "Gaming PC",
     description: "High-end gaming PC with the latest hardware.",
     price: 100000,
-    images: [
-      gamingPcImage2,
-      "https://ibb.co/PzGrTL8",
-      "https://ibb.co/qJrb3BT",
-    ],
+    // images: [
+    //   gamingPcImage2,
+    //   "https://ibb.co/PzGrTL8",
+    //   "https://ibb.co/qJrb3BT",
+    // ],
     category: "PCs",
     rating: 4.9,
   },
@@ -86,11 +86,11 @@ const products = [
     name: "Gaming PC",
     description: "High-end gaming PC with the latest hardware.",
     price: 100000,
-    images: [
-      gamingPcImage3,
-      "https://ibb.co/PzGrTL8",
-      "https://ibb.co/qJrb3BT",
-    ],
+    // images: [
+    //   gamingPcImage3,
+    //   "https://ibb.co/PzGrTL8",
+    //   "https://ibb.co/qJrb3BT",
+    // ],
     category: "PCs",
     rating: 4.9,
   },
@@ -99,7 +99,7 @@ const products = [
     name: "Wireless Headset",
     description: "Precision wireless mouse for gaming.",
     price: 5000,
-    images: [headsetImage1, "https://ibb.co/PzGrTL8", "https://ibb.co/qJrb3BT"],
+    // images: [headsetImage1, "https://ibb.co/PzGrTL8", "https://ibb.co/qJrb3BT"],
     category: "Accessories",
     rating: 4.5,
   },
@@ -108,7 +108,7 @@ const products = [
     name: "Wireless  Headset",
     description: "Precision wireless mouse for gaming.",
     price: 5000,
-    images: [headsetImage2, "https://ibb.co/PzGrTL8", "https://ibb.co/qJrb3BT"],
+    // images: [headsetImage2, "https://ibb.co/PzGrTL8", "https://ibb.co/qJrb3BT"],
     category: "Accessories",
     rating: 4.2,
   },
