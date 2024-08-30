@@ -11,6 +11,7 @@ import Shopjunction from "./components/Shop/shopjunction";
 import CartPage from "./components/Home/CartPage";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+
 const App = () => {
   const [cart, setCart] = useState([]);
 
