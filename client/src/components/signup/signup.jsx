@@ -49,8 +49,6 @@ const Signup = () => {
           }),
         });
 
-        
-
         if (response.ok) {
           navigate("/login");
         } else {

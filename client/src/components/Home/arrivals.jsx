@@ -22,7 +22,7 @@ const Arrivals = () => {
         setLoading(false);
       } catch (error) {
         console.error("No new arrivals:", error);
-        setError(error.message);
+        setError('No new arrivals');
         setLoading(false);
       }
     };

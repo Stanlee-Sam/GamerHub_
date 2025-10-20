@@ -7,10 +7,11 @@
   --alt-color3: #0f1432;
 }
 .product-page {
+  
   display: flex;
   justify-content: space-between;
   background-color: var(--alt-color2);
-  padding-top: 40px;
+  padding-top: 90px;
   padding-bottom: 40px;
 }
 .details .checkout-btn {
@@ -130,4 +131,11 @@ height: 20px;
 .product-span {
   font-weight: 300;
   font-size: 15px;
+}
+
+.counter-btns-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }

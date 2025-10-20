@@ -7,7 +7,7 @@ import { apiUrl } from "../../utils/config";
 
 const Product = () => {
   const { id } = useParams();
-  console.log("Product ID from useParams", id)
+  console.log("Product ID from useParams", id);
 
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -25,22 +25,24 @@ const Product = () => {
 
   const fetchProduct = async (productId) => {
     try {
-      console.log(`Fetching product with ID: ${productId} from ${apiUrl}/api/products/${productId}`);
+      console.log(
+        `Fetching product with ID: ${productId} from ${apiUrl}/api/products/${productId}`
+      );
       const response = await fetch(`${apiUrl}/api/products/${productId}`);
       if (!response.ok) {
         throw new Error("Failed to fetch product");
       }
       const data = await response.json();
       console.log("Product data fetched:", data);
-      setProduct(data);
-      setActiveImage(data.images[0]);
+      setProduct(data.data);
+      setActiveImage(data.data.images[0]);
+
       setLoading(false);
     } catch (e) {
       setError(e.message);
       setLoading(false);
     }
   };
-
 
   const renderStars = (rating) => {
     return (
@@ -64,7 +66,11 @@ const Product = () => {
       <div className="product-pic">
         <div className="variety">
           {product.images.map((image, index) => (
-            <div key={index} className={`pic${index + 1}`} onClick={() => setActiveImage(image)}>
+            <div
+              key={index}
+              className={`pic${index + 1}`}
+              onClick={() => setActiveImage(image)}
+            >
               <img src={image} alt={`Variety ${index + 1}`} />
             </div>
           ))}
@@ -85,9 +91,10 @@ const Product = () => {
             </label>
           </div>
           <div className="btn-circle">
-            {product.colors && product.colors.map((color, index) => (
-              <button key={index} className={`color-btn ${color}`} />
-            ))}
+            {product.colors &&
+              product.colors.map((color, index) => (
+                <button key={index} className={`color-btn ${color}`} />
+              ))}
           </div>
         </div>
         <div className="counter">
@@ -109,4 +116,3 @@ const Product = () => {
 };
 
 export default Product;
-

@@ -8,6 +8,10 @@ import img3 from "../../assets/ps 4 feat.jpeg";
 import img4 from "../../assets/pc feat.jpeg";
 import img5 from "../../assets/Xbox Series S feat.jpeg";
 import img6 from "../../assets/Xbox Series X feat.jpeg";
+import PsLogo from "../../assets/ps logo.jpeg"
+import Nintendo from "../../assets/Nintendo logo.jpeg"
+import Xbox from "../../assets/Xbox Logo.jpeg"
+import Asus from "../../assets/Asus Asus Logo, Logo Vector, Asus, Computer Brands PNG Transparent Clipart Image and PSD File for Free Download.jpeg"
 
 const Featproducts = () => {
 
@@ -107,16 +111,16 @@ const Featproducts = () => {
         <h3>Featured Brands</h3>
         <div className="brand-cards-all">
         <div className="brand-card">
-            <img src="../../../src/assets/ps logo.jpeg" alt="" />
+            <img src={PsLogo} alt="" />
         </div>
         <div className="brand-card">
-            <img src="../../../src/assets/Nintendo logo.jpeg" alt="" />
+            <img src={Nintendo} alt="" />
         </div>
         <div className="brand-card">
-            <img src="../../../src/assets/Xbox Logo.jpeg" alt="" />
+            <img src={Xbox} alt="" />
         </div>
         <div className="brand-card">
-            <img src="../../../src/assets/Asus Asus Logo, Logo Vector, Asus, Computer Brands PNG Transparent Clipart Image and PSD File for Free Download.jpeg" alt="" />
+            <img src={Asus} alt="" />
         </div>
         </div>
 

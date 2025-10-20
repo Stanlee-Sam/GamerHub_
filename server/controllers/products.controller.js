@@ -115,7 +115,6 @@ export const addProduct = async (req, res) => {
           category,
           rating: parseFloat(rating) || 0,
           isNewArrival: isNewArrival === 'true', 
-          updatedAt: new Date(), 
         },
       });
 
@@ -131,7 +130,7 @@ export const addProduct = async (req, res) => {
 
 export const getAddedProduct = async (req, res) => {
   try{
-    const products = await product.findMany()
+    const products = await prisma.product.findMany()
   res.status(200).send(products)
 
   }catch(e){
