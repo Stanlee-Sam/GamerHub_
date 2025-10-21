@@ -3,9 +3,9 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 // import { useNavigate } from "react-router-dom";
 
-// import { apiUrl } from "../../utils/config";
+import { apiUrl } from "../../utils/config";
 
-const apiUrl = import.meta.env.VITE_API_URL_BASE;
+//const apiUrl = import.meta.env.VITE_API_URL_BASE;
 
 const Login = () => {
   // const navigate = useNavigate();
