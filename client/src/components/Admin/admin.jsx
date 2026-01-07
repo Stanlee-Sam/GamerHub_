@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./admin.css";
 import { productsAdd } from "../../slices/productSlice";
+import { toast } from "react-toastify";
 
 const Admin = () => {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ const Admin = () => {
     };
 
     console.log("Product Data: ", productData);
+    toast.success("Product uploaded")
 
     dispatch(productsAdd(productData));
   };

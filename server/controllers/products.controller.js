@@ -67,31 +67,7 @@ export const createProduct = async (req, res) => {
     res.status(500).json({ success: false, message: e.message });
   }
 };
-// export const addProduct = async (req,res) => {
-//   const { name, description, price, images, category, rating, isNewArrival } = req.body;
-//   try{
-//     if(images){
-//       const uploadRes = await cloudinary.uploader.upload(images, {
-//         upload_preset : "onlineShop",
-//         timeout: 120000,
-//       })
-//       if(uploadRes){
-//         const product = new Product({
-//           name, description, price, images : uploadRes.secure_url, category, rating, isNewArrival
-//         })
-//         const savedProduct =  await product.save();
 
-//         res.status(200).json({success : true, message : "Product added",savedProduct })
-//       }
-
-//     }
-
-//   }catch(e){
-//     console.error(e)
-//     res.status(500).json({success : false, message : "Error adding product"})
-
-//   }
-// }
 
 export const addProduct = async (req, res) => {
   const { name, description, price, images, category, rating, isNewArrival } = req.body;

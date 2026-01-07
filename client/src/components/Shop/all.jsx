@@ -57,20 +57,32 @@ const All = ({ searchQuery = "", cart, setCart }) => {
     navigate(`/product/${productId}`);
   };
 
-  const handleAddToCart = (productId) => {
+  const handleAddToCart = async (productId) => {
     const productToAdd = filteredProducts.find((product) => product.id === productId);
     if (productToAdd) {
-      const existingProduct = cart.find((item) => item.id === productId);
-      if (existingProduct) {
-        const updatedCart = cart.map((item) =>
-          item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
-        );
-        setCart(updatedCart);
-      } else {
-        setCart([...cart, { ...productToAdd, quantity: 1 }]);
+      try {
+        await fetch(`${apiUrl}/api/cart`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ productId, quantity: 1 }),
+        });
+
+        const existingProduct = cart.find((item) => item.id === productId);
+        if (existingProduct) {
+          const updatedCart = cart.map((item) =>
+            item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+          );
+          setCart(updatedCart);
+        } else {
+          setCart([...cart, { ...productToAdd, quantity: 1 }]);
+        }
+        toast.success(`Added ${productToAdd.name} to cart`);
+      } catch (error) {
+        console.error('Error adding item to cart:', error);
+        toast.error('Failed to add item to cart');
       }
-      console.log(`Added product ${productId} to cart`);
-      toast.success(`Added ${productToAdd.name} to cart`);
     }
   };
 

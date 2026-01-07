@@ -43,7 +43,6 @@ model contact {
   @@map("contacts_table")
 }
 
-
 model Product {
   id           String   @id @default(uuid())
   name         String   @unique
@@ -56,19 +55,22 @@ model Product {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
+  cartItems CartItem[]
+
   @@map("products_table")
 }
 
 model CartItem {
-  id           String      @id @default(uuid())
-  productId    String      @unique
-  name         String
-  price        Float
-  images       String[]
-  quantity     Int
-  createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @updatedAt
+  id        String   @id @default(uuid())
+  productId String   @unique
+  name      String
+  price     Float
+  images    String[]
+  quantity  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  product Product @relation(fields: [productId], references: [id])
 
   @@map("cart_items")
 }
-
