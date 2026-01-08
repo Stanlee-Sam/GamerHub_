@@ -18,7 +18,7 @@ Key capabilities:
 
 - Frontend: React (Vite) — client/ folder
 - Backend: Node.js + Express — server/ folder
-- Database: Prisma (Postgres or SQLite configured via `DATABASE_URL`)
+- Database: Prisma (Postgres configured via `DATABASE_URL`)
 - File storage: Cloudinary (see `server/utils/cloudinary.js`)
 
 ## Repo Structure (high level)
