@@ -26,6 +26,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
+app.get("/health", (req, res) => {
+res.status(200).send("Server is awake");
+});
+
 app.use("/api/users", usersRoute);
 app.use("/api/newsletter", newsletterRoute);
 app.use("/api/contact", contactRoute);
